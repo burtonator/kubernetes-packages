@@ -5,8 +5,8 @@ Documentation=https://github.com/kubernetes/kubernetes
 [Service]
 EnvironmentFile=/etc/default/kube-scheduler
 ExecStart=/usr/local/bin/kube-scheduler \\
-  --leader-elect=true \\
-  --master=http://127.0.0.1:8080 \\
+  --leader-elect=${LEADER_ELECT} \\
+  --master=${MASTER} \\
   --v=2
 Restart=on-failure
 RestartSec=5
