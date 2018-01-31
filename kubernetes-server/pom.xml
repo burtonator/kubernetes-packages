@@ -15,6 +15,10 @@
 
     <properties>
 
+        <!-- TODO: unfortunately , there are no solid ways to create .debs for
+             each platform right now. I might be able to do it with plugin executions
+             though but that seems ugly -->
+
         <package.version>0.9.2</package.version>
         <package.installdir>/usr/share/${project.groupId}</package.installdir>
 
@@ -77,38 +81,37 @@
 
                             <dataSet>
 
-                                <!--<data>-->
+                                <data>
 
-                                    <!--<src>${basedir}/src/main/init.d/</src>-->
-                                    <!--<type>directory</type>-->
-                                    <!--<includes>**</includes>-->
+                                    <src>etc</src>
+                                    <type>directory</type>
+                                    <includes>**</includes>
 
-                                    <!--<mapper>-->
-                                        <!--<type>perm</type>-->
-                                        <!--<prefix>/etc/init.d</prefix>-->
-                                        <!--<filemode>755</filemode>-->
-                                        <!--<user>root</user>-->
-                                        <!--<group>root</group>-->
-                                    <!--</mapper>-->
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/etc</prefix>
+                                        <filemode>644</filemode>
+                                        <user>root</user>
+                                        <group>root</group>
+                                    </mapper>
 
-                                <!--</data>-->
+                                </data>
 
-                                <!--<data>-->
+                                <data>
 
-                                    <!--<src>${project.build.directory}/${download.filename}</src>-->
-                                    <!--<type>archive</type>-->
-                                    <!--<includes>**</includes>-->
+                                    <src>lib</src>
+                                    <type>directory</type>
+                                    <includes>**</includes>
 
-                                    <!--<mapper>-->
-                                        <!--<type>perm</type>-->
-                                        <!--<strip>1</strip>-->
-                                        <!--<prefix>${package.installdir}</prefix>-->
-                                        <!--<filemode>644</filemode>-->
-                                        <!--<user>root</user>-->
-                                        <!--<group>root</group>-->
-                                    <!--</mapper>-->
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/lib</prefix>
+                                        <filemode>644</filemode>
+                                        <user>root</user>
+                                        <group>root</group>
+                                    </mapper>
 
-                                <!--</data>-->
+                                </data>
 
                                 <data>
 
