@@ -37,26 +37,25 @@
 
         <plugins>
 
-            <!-- FIXME: -->
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>wagon-maven-plugin</artifactId>-->
-                <!--<version>1.0</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>download-test-data</id>-->
-                        <!--<phase>prepare-package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>download-single</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<url>${download.url}</url>-->
-                            <!--<fromFile>${download.filename}</fromFile>-->
-                            <!--<toDir>${project.build.directory}</toDir>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>download-test-data</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${download.url}</url>
+                            <fromFile>${download.filename}</fromFile>
+                            <toDir>${project.build.directory}</toDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
 
