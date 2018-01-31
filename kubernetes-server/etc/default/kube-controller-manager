@@ -1,0 +1,10 @@
+ADDRESS=0.0.0.0
+CLUSTER_CIDR=10.200.0.0/16
+CLUSTER_NAME=kubernetes
+CLUSTER_SIGNING_CERT_FILE=/var/lib/kubernetes/ca.pem
+CLUSTER_SIGNING_KEY_FILE=/var/lib/kubernetes/ca-key.pem
+LEADER_ELECT=true
+MASTER=http://127.0.0.1:8080
+ROOT_CA_FILE=/var/lib/kubernetes/ca.pem
+SERVICE_ACCOUNT_PRIVATE_KEY_FILE=/var/lib/kubernetes/ca-key.pem
+SERVICE_CLUSTER_IP_RANGE=10.32.0.0/24
