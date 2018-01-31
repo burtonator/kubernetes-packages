@@ -4,7 +4,7 @@ Documentation=https://github.com/kubernetes/kubernetes
 
 [Service]
 EnvironmentFile=/etc/default/kube-controller-manager
-ExecStart=/usr/local/bin/kube-controller-manager \\
+ExecStart=/usr/share/kubernetes-server/server/bin/kube-controller-manager \\
   --address=${ADDRESS} \\
   --cluster-cidr=${CLUSTER_CIDR} \\
   --cluster-name=${CLUSTER_NAME} \\

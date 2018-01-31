@@ -4,7 +4,7 @@ Documentation=https://github.com/kubernetes/kubernetes
 
 [Service]
 EnvironmentFile=/etc/default/kube-scheduler
-ExecStart=/usr/local/bin/kube-scheduler \\
+ExecStart=/usr/share/kubernetes-server/server/bin/kube-scheduler \\
   --leader-elect=${LEADER_ELECT} \\
   --master=${MASTER} \\
   --v=2

@@ -7,7 +7,7 @@
 
     <groupId>kubernetes-server</groupId>
     <artifactId>kubernetes-server</artifactId>
-    <version>0.9.2</version>
+    <version>1.9.2</version>
 
     <dependencies>
 
