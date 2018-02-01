@@ -7,7 +7,7 @@
 
     <groupId>kubernetes-server</groupId>
     <artifactId>kubernetes-server</artifactId>
-    <version>1.9.2-4</version>
+    <version>1.9.2-5</version>
 
     <dependencies>
 
@@ -76,7 +76,7 @@
                             <!-- expand "SNAPSHOT" to what is in the "USER" env variable -->
                             <snapshotEnv>USER</snapshotEnv>
                             <verbose>true</verbose>
-                            <controlDir>./control/</controlDir>
+                            <!--<controlDir>src/deb/control</controlDir>-->
 
                             <dataSet>
 
