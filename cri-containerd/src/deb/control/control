@@ -3,6 +3,6 @@ Version: [[version]]
 Section: misc
 Priority: low
 Architecture: amd64
-Depends: 
+Depends:
 Description: [[description]]
 Maintainer: burton@scalefastr.io

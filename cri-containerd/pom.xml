@@ -19,6 +19,8 @@
              each platform right now. I might be able to do it with plugin executions
              though but that seems ugly -->
 
+        <project.architecture>amd64</project.architecture>
+
         <package.version>v1.0.0-beta.1</package.version>
         <package.installdir>/usr/share/${project.groupId}</package.installdir>
 
@@ -76,6 +78,7 @@
                             <!-- expand "SNAPSHOT" to what is in the "USER" env variable -->
                             <snapshotEnv>USER</snapshotEnv>
                             <verbose>true</verbose>
+                            <deb>target/${project.artifactId}-${project.version}_${project.architecture}.deb</deb>
 
                             <dataSet>
 
