@@ -5,9 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kubernetes-server</groupId>
-    <artifactId>kubernetes-server</artifactId>
-    <version>1.9.2-4</version>
+    <groupId>cri-containerd</groupId>
+    <artifactId>cri-containerd</artifactId>
+    <version>v1.0.0-beta.1</version>
 
     <dependencies>
 
@@ -19,17 +19,17 @@
              each platform right now. I might be able to do it with plugin executions
              though but that seems ugly -->
 
-        <package.version>0.9.2</package.version>
+        <package.version>v1.0.0-beta.1</package.version>
         <package.installdir>/usr/share/${project.groupId}</package.installdir>
 
-        <download.project.name>kubernetes-server</download.project.name>
+        <download.project.name>cri-containerd</download.project.name>
 
         <!-- auto compute metadata from github release URLs -->
-        <download.url>https://dl.k8s.io/v1.9.2/</download.url>
-        <download.filename>kubernetes-server-linux-amd64.tar.gz</download.filename>
+        <download.url>https://github.com/containerd/cri-containerd/releases/download/v1.0.0-beta.1/</download.url>
+        <download.filename>cri-containerd-1.0.0-beta.1.linux-amd64.tar.gz</download.filename>
 
         <!-- the first directory in the tar.gz -->
-        <download.tar.dir>kubernetes</download.tar.dir>
+        <download.tar.dir>.</download.tar.dir>
 
     </properties>
 
@@ -37,25 +37,25 @@
 
         <plugins>
 
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>wagon-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <id>download-test-data</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>download-single</goal>
-                        </goals>
-                        <configuration>
-                            <url>${download.url}</url>
-                            <fromFile>${download.filename}</fromFile>
-                            <toDir>${project.build.directory}</toDir>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>wagon-maven-plugin</artifactId>-->
+                <!--<version>1.0</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>download-test-data</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>download-single</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<url>${download.url}</url>-->
+                            <!--<fromFile>${download.filename}</fromFile>-->
+                            <!--<toDir>${project.build.directory}</toDir>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
             <plugin>
 
@@ -82,29 +82,15 @@
 
                                 <data>
 
-                                    <src>etc</src>
-                                    <type>directory</type>
-                                    <includes>**</includes>
+                                    <src>${project.build.directory}/${download.filename}</src>
+                                    <type>archive</type>
+
+                                    <includes>**/etc/systemd/system/**</includes>
 
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>/etc</prefix>
-                                        <filemode>644</filemode>
-                                        <user>root</user>
-                                        <group>root</group>
-                                    </mapper>
-
-                                </data>
-
-                                <data>
-
-                                    <src>lib</src>
-                                    <type>directory</type>
-                                    <includes>**</includes>
-
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>/lib</prefix>
+                                        <strip>3</strip>
+                                        <prefix>/lib/systemd/system</prefix>
                                         <filemode>644</filemode>
                                         <user>root</user>
                                         <group>root</group>
@@ -117,32 +103,31 @@
                                     <src>${project.build.directory}/${download.filename}</src>
                                     <type>archive</type>
 
-                                    <includes>**/server/bin/**</includes>
+                                    <includes>**/opt/cri-containerd/cluster/**</includes>
 
                                     <mapper>
                                         <type>perm</type>
-                                        <strip>1</strip>
+                                        <strip>2</strip>
+                                        <prefix>${package.installdir}</prefix>
+                                        <filemode>644</filemode>
+                                        <user>root</user>
+                                        <group>root</group>
+                                    </mapper>
+
+                                </data>
+
+                                <data>
+
+                                    <src>${project.build.directory}/${download.filename}</src>
+                                    <type>archive</type>
+
+                                    <includes>**/usr/local/bin/**,**/usr/local/sbin/**</includes>
+
+                                    <mapper>
+                                        <type>perm</type>
+                                        <strip>2</strip>
                                         <prefix>${package.installdir}</prefix>
                                         <filemode>755</filemode>
-                                        <user>root</user>
-                                        <group>root</group>
-                                    </mapper>
-
-                                </data>
-
-                                <data>
-
-                                    <src>${project.build.directory}/${download.filename}</src>
-                                    <type>archive</type>
-
-                                    <excludes>**/server/bin/**</excludes>
-                                    <includes>**</includes>
-
-                                    <mapper>
-                                        <type>perm</type>
-                                        <strip>1</strip>
-                                        <prefix>${package.installdir}</prefix>
-                                        <filemode>644</filemode>
                                         <user>root</user>
                                         <group>root</group>
                                     </mapper>
