@@ -7,7 +7,7 @@
 
     <groupId>cri-containerd</groupId>
     <artifactId>cri-containerd</artifactId>
-    <version>1.0.0-beta.1</version>
+    <version>1.0.0-beta.1-2</version>
 
     <dependencies>
 
@@ -91,7 +91,7 @@
 
                                     <mapper>
                                         <type>perm</type>
-                                        <strip>3</strip>
+                                        <strip>4</strip>
                                         <prefix>/lib/systemd/system</prefix>
                                         <filemode>644</filemode>
                                         <user>root</user>
