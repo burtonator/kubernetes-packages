@@ -10,6 +10,7 @@ CONTAINER_RUNTIME_ENDPOINT=unix:///var/run/cri-containerd.sock
 IMAGE_PULL_PROGRESS_DEADLINE=2m
 KUBECONFIG=/var/lib/kubelet/kubeconfig
 NETWORK_PLUGIN=cni
+POD_CIDR=10.200.1.0/64
 REGISTER_NODE=true
 RUNTIME_REQUEST_TIMEOUT=15m
 TLS_CERT_FILE=/var/lib/kubelet/localhost.pem

@@ -19,6 +19,7 @@ ExecStart=/usr/share/kubernetes-server/server/bin/kubelet \
   --image-pull-progress-deadline=${IMAGE_PULL_PROGRESS_DEADLINE} \
   --kubeconfig=${KUBECONFIG} \
   --network-plugin=${NETWORK_PLUGIN} \
+  --pod-cidr=${POD_CIDR} \\
   --register-node=${REGISTER_NODE} \
   --runtime-request-timeout=${RUNTIME_REQUEST_TIMEOUT} \
   --tls-cert-file=${TLS_CERT_FILE} \
