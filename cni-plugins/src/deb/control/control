@@ -1,0 +1,8 @@
+Package: [[name]]
+Version: [[version]]
+Section: misc
+Priority: low
+Architecture: amd64
+Depends:
+Description: [[description]]
+Maintainer: burton@scalefastr.io

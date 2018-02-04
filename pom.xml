@@ -19,6 +19,7 @@
     <modules>
         <module>kubernetes-server</module>
         <module>cri-containerd</module>
+        <module>cni-plugins</module>
     </modules>
 
     <build>
