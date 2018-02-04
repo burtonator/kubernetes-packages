@@ -5,6 +5,7 @@
       <w>cidrs</w>
       <w>containerd</w>
       <w>maxbackup</w>
+      <w>systemd</w>
     </words>
   </dictionary>
 </component>

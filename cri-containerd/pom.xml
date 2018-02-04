@@ -7,7 +7,7 @@
 
     <groupId>cri-containerd</groupId>
     <artifactId>cri-containerd</artifactId>
-    <version>1.0.0-beta.1+4</version>
+    <version>1.0.0-beta.1+5</version>
 
     <dependencies>
 
@@ -87,12 +87,13 @@
                                     <src>${project.build.directory}/${download.filename}</src>
                                     <type>archive</type>
 
-                                    <includes>**/etc/systemd/system/**</includes>
+                                    <includes>**/etc/**</includes>
+                                    <excludes>**/etc/systemd/**</excludes>
 
                                     <mapper>
                                         <type>perm</type>
-                                        <strip>4</strip>
-                                        <prefix>/lib/systemd/system</prefix>
+                                        <strip>2</strip>
+                                        <prefix>/etc</prefix>
                                         <filemode>644</filemode>
                                         <user>root</user>
                                         <group>root</group>
@@ -128,7 +129,7 @@
                                     <mapper>
                                         <type>perm</type>
                                         <strip>3</strip>
-                                        <prefix>${package.installdir}</prefix>
+                                        <prefix>/usr</prefix>
                                         <filemode>755</filemode>
                                         <user>root</user>
                                         <group>root</group>
