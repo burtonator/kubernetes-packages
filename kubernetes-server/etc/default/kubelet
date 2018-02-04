@@ -15,3 +15,5 @@ REGISTER_NODE=true
 RUNTIME_REQUEST_TIMEOUT=15m
 TLS_CERT_FILE=/var/lib/kubelet/localhost.pem
 TLS_PRIVATE_KEY_FILE=/var/lib/kubelet/localhost-key.pem
+CNI_CONF_DIR=/etc/cni/net.d
+CNI_BIN_DIR=/usr/share/cni-plugins/

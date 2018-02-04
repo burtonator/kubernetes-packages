@@ -2,6 +2,7 @@
   <dictionary name="burton">
     <words>
       <w>cidr</w>
+      <w>cidrs</w>
       <w>containerd</w>
       <w>maxbackup</w>
     </words>
