@@ -7,7 +7,7 @@
 
     <groupId>cni-plugins</groupId>
     <artifactId>cni-plugins</artifactId>
-    <version>0.6.0+2</version>
+    <version>0.6.0+3</version>
 
     <description>
         cni-plugins
@@ -33,10 +33,7 @@
         <!-- auto compute metadata from github release URLs -->
         <download.url>https://github.com/containernetworking/plugins/releases/download/v${package.version}/</download.url>
         <download.filename>cni-plugins-amd64-v${package.version}.tgz</download.filename>
-
-        <!-- the first directory in the tar.gz -->
-        <download.tar.dir>.</download.tar.dir>
-
+        
     </properties>
 
     <build>
@@ -95,7 +92,7 @@
 
                                     <mapper>
                                         <type>perm</type>
-                                        <strip>0</strip>
+                                        <strip>1</strip>
                                         <prefix>${package.installdir}</prefix>
                                         <filemode>755</filemode>
                                         <user>root</user>
