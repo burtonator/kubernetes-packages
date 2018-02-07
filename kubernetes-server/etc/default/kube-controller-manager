@@ -9,3 +9,4 @@ ROOT_CA_FILE=/var/lib/kubernetes/ca.pem
 SERVICE_ACCOUNT_PRIVATE_KEY_FILE=/var/lib/kubernetes/ca-key.pem
 SERVICE_CLUSTER_IP_RANGE=10.32.0.0/24
 ALLOCATE_NODE_CIDRS=true
+VERBOSITY=2

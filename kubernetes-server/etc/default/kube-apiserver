@@ -28,3 +28,4 @@ SERVICE_NODE_PORT_RANGE=30000-32767
 TLS_CA_FILE=/var/lib/kubernetes/ca.pem
 TLS_CERT_FILE=/var/lib/kubernetes/kubernetes.pem
 TLS_PRIVATE_KEY_FILE=/var/lib/kubernetes/kubernetes-key.pem
+VERBOSITY=2

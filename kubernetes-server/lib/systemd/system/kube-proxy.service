@@ -8,7 +8,7 @@ ExecStart=/usr/share/kubernetes-server/server/bin/kube-proxy \
   --cluster-cidr=${CLUSTER_CIDR} \
   --kubeconfig=${KUBECONFIG} \
   --proxy-mode=${PROXY_MODE} \
-  --v=2
+  --v=${VERBOSITY}
 Restart=on-failure
 RestartSec=5
 

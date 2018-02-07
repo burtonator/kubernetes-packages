@@ -7,7 +7,7 @@ EnvironmentFile=/etc/default/kube-scheduler
 ExecStart=/usr/share/kubernetes-server/server/bin/kube-scheduler \
   --leader-elect=${LEADER_ELECT} \
   --master=${MASTER} \
-  --v=2
+  --v=${VERBOSITY}
 Restart=on-failure
 RestartSec=5
 

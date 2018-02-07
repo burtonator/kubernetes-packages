@@ -1,3 +1,4 @@
 CLUSTER_CIDR=10.200.0.0/16
 KUBECONFIG=/var/lib/kube-proxy/kubeconfig
 PROXY_MODE=iptables
+VERBOSITY=2
