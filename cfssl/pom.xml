@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cfssl</groupId>
+    <artifactId>cfssl</artifactId>
+    <version>1.2.0+1</version>
+
+    <dependencies>
+
+    </dependencies>
+
+    <properties>
+
+        <project.architecture>amd64</project.architecture>
+
+        <!-- TODO: unfortunately , there are no solid ways to create .debs for
+             each platform right now. I might be able to do it with plugin executions
+             though but that seems ugly -->
+
+        <package.version>1.2</package.version>
+
+    </properties>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>execution-01</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://pkg.cfssl.org/R${package.version}/</url>
+                            <fromFile>cfssl_linux-amd64</fromFile>
+                            <toFile>${project.build.directory}/cfssl</toFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>execution-02</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://pkg.cfssl.org/R${package.version}/</url>
+                            <fromFile>cfssljson_linux-amd64</fromFile>
+                            <toFile>${project.build.directory}/cfssljson</toFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+
+                <artifactId>jdeb</artifactId>
+                <groupId>org.vafer</groupId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jdeb</goal>
+                        </goals>
+
+                        <configuration>
+                            <verbose>true</verbose>
+                            <snapshotExpand>true</snapshotExpand>
+                            <!-- expand "SNAPSHOT" to what is in the "USER" env variable -->
+                            <snapshotEnv>USER</snapshotEnv>
+                            <verbose>true</verbose>
+                            <deb>target/${project.artifactId}-${project.version}_${project.architecture}.deb</deb>
+
+                            <dataSet>
+
+                                <data>
+
+                                    <src>target</src>
+                                    <type>directory</type>
+
+                                    <includes>**/cfssl,**/cfssljson</includes>
+
+                                    <mapper>
+                                        <type>perm</type>
+                                        <strip>1</strip>
+                                        <prefix>/usr/bin</prefix>
+                                        <filemode>755</filemode>
+                                        <user>root</user>
+                                        <group>root</group>
+                                    </mapper>
+
+                                </data>
+
+                            </dataSet>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+    </build>
+</project>
